@@ -1,4 +1,4 @@
-package codes.zucker.reinforcement.entity;
+package codes.zucker.Reinforcement.entity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +13,7 @@ import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.Vector;
 
-import codes.zucker.reinforcement.ReinforcementPlugin;
+import codes.zucker.Reinforcement.ReinforcementPlugin;
 
 public class Hologram {
 

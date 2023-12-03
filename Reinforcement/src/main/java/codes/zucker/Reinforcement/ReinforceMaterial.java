@@ -1,4 +1,4 @@
-package codes.zucker.reinforcement;
+package codes.zucker.Reinforcement;
 
 import java.util.ArrayList;
 import java.util.List;

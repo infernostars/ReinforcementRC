@@ -1,4 +1,4 @@
-package codes.zucker.reinforcement;
+package codes.zucker.Reinforcement;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -28,9 +28,9 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.Damageable;
 
-import codes.zucker.reinforcement.entity.ReinforcedBlock;
-import codes.zucker.reinforcement.util.ConfigurationYaml;
-import codes.zucker.reinforcement.util.Utils;
+import codes.zucker.Reinforcement.entity.ReinforcedBlock;
+import codes.zucker.Reinforcement.util.ConfigurationYaml;
+import codes.zucker.Reinforcement.util.Utils;
 
 public class Events implements Listener {
 

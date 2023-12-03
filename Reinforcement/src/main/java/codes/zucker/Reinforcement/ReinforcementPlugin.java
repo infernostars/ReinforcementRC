@@ -1,4 +1,4 @@
-package codes.zucker.reinforcement;
+package codes.zucker.Reinforcement;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -10,12 +10,12 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import codes.zucker.reinforcement.entity.Hologram;
-import codes.zucker.reinforcement.util.CommandHelper;
-import codes.zucker.reinforcement.util.ConfigurationYaml;
-import codes.zucker.reinforcement.util.DataYaml;
-import codes.zucker.reinforcement.util.LOG;
-import codes.zucker.reinforcement.util.LangYaml;
+import codes.zucker.Reinforcement.entity.Hologram;
+import codes.zucker.Reinforcement.util.CommandHelper;
+import codes.zucker.Reinforcement.util.ConfigurationYaml;
+import codes.zucker.Reinforcement.util.DataYaml;
+import codes.zucker.Reinforcement.util.LOG;
+import codes.zucker.Reinforcement.util.LangYaml;
 
 public class ReinforcementPlugin extends JavaPlugin
 {
@@ -24,7 +24,7 @@ public class ReinforcementPlugin extends JavaPlugin
     public void onEnable() {
         ConfigurationYaml.loadConfigurationFile();
 
-        ConfigurationYaml.getList("reinforcement_blocks").forEach(i -> {
+        ConfigurationYaml.getList("Reinforcement_blocks").forEach(i -> {
             List<?> entry = ((ArrayList<?>)i);
             Material material = Material.getMaterial((String)entry.get(0));
             int breaks = (int)entry.get(1);

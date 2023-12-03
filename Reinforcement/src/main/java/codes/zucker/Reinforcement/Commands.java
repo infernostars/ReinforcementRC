@@ -1,4 +1,4 @@
-package codes.zucker.reinforcement;
+package codes.zucker.Reinforcement;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,8 +7,8 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import codes.zucker.reinforcement.util.LangYaml;
-import codes.zucker.reinforcement.util.Utils;
+import codes.zucker.Reinforcement.util.LangYaml;
+import codes.zucker.Reinforcement.util.Utils;
 
 public class Commands {
     
