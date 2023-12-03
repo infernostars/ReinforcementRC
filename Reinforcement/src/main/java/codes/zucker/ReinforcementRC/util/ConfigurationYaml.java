@@ -1,4 +1,4 @@
-package codes.zucker.Reinforcement.util;
+package codes.zucker.ReinforcementRC.util;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -11,7 +11,7 @@ import java.util.Map;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import codes.zucker.Reinforcement.ReinforcementPlugin;
+import codes.zucker.ReinforcementRC.ReinforcementPlugin;
 
 public class ConfigurationYaml {
 

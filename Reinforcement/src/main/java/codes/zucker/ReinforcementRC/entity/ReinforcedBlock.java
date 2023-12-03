@@ -1,4 +1,4 @@
-package codes.zucker.Reinforcement.entity;
+package codes.zucker.ReinforcementRC.entity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,9 +13,9 @@ import org.bukkit.Sound;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 
-import codes.zucker.Reinforcement.ReinforceMaterial;
-import codes.zucker.Reinforcement.util.ConfigurationYaml;
-import codes.zucker.Reinforcement.util.Utils;
+import codes.zucker.ReinforcementRC.ReinforceMaterial;
+import codes.zucker.ReinforcementRC.util.ConfigurationYaml;
+import codes.zucker.ReinforcementRC.util.Utils;
 
 public class ReinforcedBlock {
 

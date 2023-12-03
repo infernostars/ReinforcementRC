@@ -5,10 +5,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>codes.zucker</groupId>
-  <artifactId>Reinforcement</artifactId>
-  <version>1.1.1</version>
+  <artifactId>ReinforcementRC</artifactId>
+  <version>1.1.2</version>
 
-  <name>Reinforcement</name>
+  <name>ReinforcementRC</name>
   <url>https://github.com/trevor99z</url>
 
   <properties>

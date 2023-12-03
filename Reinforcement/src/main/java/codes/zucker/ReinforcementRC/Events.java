@@ -1,4 +1,4 @@
-package codes.zucker.Reinforcement;
+package codes.zucker.ReinforcementRC;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -21,6 +21,8 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockBurnEvent;
 import org.bukkit.event.block.BlockExplodeEvent;
 import org.bukkit.event.block.BlockIgniteEvent;
+import org.bukkit.event.block.BlockPistonExtendEvent;
+import org.bukkit.event.block.BlockPistonRetractEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
@@ -28,9 +30,9 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.Damageable;
 
-import codes.zucker.Reinforcement.entity.ReinforcedBlock;
-import codes.zucker.Reinforcement.util.ConfigurationYaml;
-import codes.zucker.Reinforcement.util.Utils;
+import codes.zucker.ReinforcementRC.entity.ReinforcedBlock;
+import codes.zucker.ReinforcementRC.util.ConfigurationYaml;
+import codes.zucker.ReinforcementRC.util.Utils;
 
 public class Events implements Listener {
 
@@ -139,7 +141,7 @@ public class Events implements Listener {
             block.damageBlock(player.getEyeLocation(), 1);
             if (block.getBreaksLeft() >= 0) {
                 boolean damageOnlyOnLastBreak = ConfigurationYaml.getBoolean("reinforcement_damage_on_break_only");
-                
+
                 if (!damageOnlyOnLastBreak || block.getBreaksLeft() == 0) {
                     ItemStack hand = player.getInventory().getItemInMainHand();
                     if (hand.getItemMeta() instanceof Damageable) {
@@ -150,6 +152,28 @@ public class Events implements Listener {
                     player.updateInventory();
                 }
 
+                event.setCancelled(true);
+            }
+        }
+    }
+
+    @EventHandler
+    public static void onPistonPush(BlockPistonExtendEvent event) {
+        List<Block> eventBlocks = event.getBlocks();
+        for(Block eventBlock : eventBlocks) {
+            ReinforcedBlock block = ReinforcedBlock.getAtLocation(eventBlock.getLocation());
+            if (block != null) {
+                event.setCancelled(true);
+            }
+        }
+    }
+
+    @EventHandler
+    public static void onPistonPull(BlockPistonRetractEvent event) {
+        List<Block> eventBlocks = event.getBlocks();
+        for(Block eventBlock : eventBlocks) {
+            ReinforcedBlock block = ReinforcedBlock.getAtLocation(eventBlock.getLocation());
+            if (block != null) {
                 event.setCancelled(true);
             }
         }

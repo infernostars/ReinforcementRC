@@ -1,4 +1,4 @@
-reinforcement_message_prefix: "&e[Reinforcement]"
+reinforcement_message_prefix: "&e[ReinforcementRC]"
 
 reinforcement_mode_on: "&aENABLED"
 reinforcement_mode_off: "&cDISABLED"

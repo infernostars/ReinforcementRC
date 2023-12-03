@@ -1,4 +1,4 @@
-package codes.zucker.Reinforcement.util;
+package codes.zucker.ReinforcementRC.util;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,9 +15,9 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import codes.zucker.Reinforcement.ReinforceMaterial;
-import codes.zucker.Reinforcement.ReinforcementPlugin;
-import codes.zucker.Reinforcement.entity.ReinforcedBlock;
+import codes.zucker.ReinforcementRC.ReinforceMaterial;
+import codes.zucker.ReinforcementRC.ReinforcementPlugin;
+import codes.zucker.ReinforcementRC.entity.ReinforcedBlock;
 
 public class DataYaml { // ConfigurationLoader, DataLoader, and LangLoader all work the same.
 

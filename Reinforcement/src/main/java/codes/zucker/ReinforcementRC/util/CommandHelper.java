@@ -1,4 +1,4 @@
-package codes.zucker.Reinforcement.util;
+package codes.zucker.ReinforcementRC.util;
 
 import java.lang.reflect.Method;
 import java.util.HashMap;
@@ -9,7 +9,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import codes.zucker.Reinforcement.Commands;
+import codes.zucker.ReinforcementRC.Commands;
 
 public class CommandHelper { // just some stuff to make creating commands easier
     

@@ -1,4 +1,4 @@
-package codes.zucker.Reinforcement.util;
+package codes.zucker.ReinforcementRC.util;
 
 import org.bukkit.Bukkit;
 
