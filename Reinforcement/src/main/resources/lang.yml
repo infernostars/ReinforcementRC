@@ -1,7 +1,13 @@
 reinforcement_message_prefix: "&e[ReinforcementRC]"
 
-reinforcement_mode_on: "&aENABLED"
-reinforcement_mode_off: "&cDISABLED"
+reinforcement_mode_on: "Reinforcing &aENABLED"
+reinforcement_mode_off: "Reinforcing &cDISABLED"
+
+admin_mode_on: "Administrator mode &aENABLED"
+admin_mode_off: "Administrator mode &cDISABLED"
+
+admin_who_placed: "This reinforced block was placed by "
 
 reinforcement_visibility_on: "Visibility mode &aon"
 reinforcement_visibility_off: "Visibility mode &coff"
+

@@ -6,11 +6,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import org.bukkit.Color;
-import org.bukkit.GameMode;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.Particle;
+import codes.zucker.ReinforcementRC.util.LangYaml;
+import org.bukkit.*;
 import org.bukkit.Particle.DustOptions;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -26,6 +23,7 @@ import org.bukkit.event.block.BlockPistonRetractEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.Damageable;
@@ -40,15 +38,31 @@ public class Events implements Listener {
 
     @EventHandler
     public static void onClick(PlayerInteractEvent event) {
-        if (event.getAction() != Action.LEFT_CLICK_BLOCK)
+        if (event.getAction() != Action.LEFT_CLICK_BLOCK && event.getAction() != Action.RIGHT_CLICK_BLOCK)
             return;
 
         Player player = event.getPlayer();
-        
         ReinforcedBlock reinforcedAtTarget = ReinforcedBlock.getAtLocation(event.getClickedBlock().getLocation());
+
+        // fix double printing on right click
+        if (event.getHand().equals(EquipmentSlot.OFF_HAND)) {
+            return;
+        }
+
+        if (event.getAction() == Action.RIGHT_CLICK_BLOCK) {
+            if (Commands.rAdminModeToggle.contains(player) && reinforcedAtTarget != null) {
+                Utils.sendMessage(player, LangYaml.getString("admin_who_placed") + Bukkit.getOfflinePlayer(reinforcedAtTarget.getOwner()).getName());
+            }
+            return;
+        }
 
         if (!Commands.reToggle.contains(player)) {
             if (player.getGameMode() == GameMode.CREATIVE && reinforcedAtTarget != null)
+                reinforcedAtTarget.destroyBlock(false);
+            return;
+        }
+        if (Commands.rAdminModeToggle.contains(player)) {
+            if (reinforcedAtTarget != null)
                 reinforcedAtTarget.destroyBlock(false);
             return;
         }

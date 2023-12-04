@@ -40,6 +40,7 @@ public class ReinforcementPlugin extends JavaPlugin
 
         CommandHelper.registerCommand("rv", "rvCommand");
         CommandHelper.registerCommand("re", "reCommand");
+        CommandHelper.registerCommand("radmin", "rAdminCommand");
     }
     
     @Override

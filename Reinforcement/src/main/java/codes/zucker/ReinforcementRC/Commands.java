@@ -14,6 +14,7 @@ public class Commands {
     
     protected static List<Player> rvToggle = new ArrayList<>();
     protected static List<Player> reToggle = new ArrayList<>();
+    protected static List<Player> rAdminModeToggle = new ArrayList<>();
     
     public static boolean rvCommand(CommandSender sender, Command cmd, String label, String[] args) {
         Player player = (Player)sender;
@@ -30,7 +31,7 @@ public class Commands {
     }
 
     private Commands() {
-        
+
     }
 
     public static boolean reCommand(CommandSender sender, Command cmd, String label, String[] args) {
@@ -43,6 +44,21 @@ public class Commands {
         else {
             reToggle.add(player);
             Utils.sendMessage(player, LangYaml.getString("reinforcement_mode_on"));
+        }
+        return true;
+    }
+
+
+    public static boolean rAdminCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        Player player = (Player)sender;
+
+        if (rAdminModeToggle.contains(player)) {
+            rAdminModeToggle.remove(player);
+            Utils.sendMessage(player, LangYaml.getString("admin_mode_off"));
+        }
+        else {
+            rAdminModeToggle.add(player);
+            Utils.sendMessage(player, LangYaml.getString("admin_mode_on"));
         }
         return true;
     }
