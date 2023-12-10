@@ -1,6 +1,6 @@
 main: codes.zucker.ReinforcementRC.ReinforcementPlugin
 name: ReinforcementRC
-version: 1.1.3
+version: 1.1.5
 api-version: 1.20
 commands:
   rv:

@@ -1,10 +1,6 @@
 package codes.zucker.ReinforcementRC;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import codes.zucker.ReinforcementRC.util.LangYaml;
 import org.bukkit.*;
@@ -43,6 +39,9 @@ public class Events implements Listener {
 
         Player player = event.getPlayer();
         ReinforcedBlock reinforcedAtTarget = ReinforcedBlock.getAtLocation(event.getClickedBlock().getLocation());
+        PlayerInventory inventory = player.getInventory();
+        Material hand = inventory.getItemInMainHand().getType();
+        Block block = event.getClickedBlock();
 
         // fix double printing on right click
         if (event.getHand().equals(EquipmentSlot.OFF_HAND)) {
@@ -52,6 +51,13 @@ public class Events implements Listener {
         if (event.getAction() == Action.RIGHT_CLICK_BLOCK) {
             if (Commands.rAdminModeToggle.contains(player) && reinforcedAtTarget != null) {
                 Utils.sendMessage(player, LangYaml.getString("admin_who_placed") + Bukkit.getOfflinePlayer(reinforcedAtTarget.getOwner()).getName());
+            }
+            if (Commands.reToggle.contains(player) && reinforcedAtTarget != null && hand == Material.getMaterial(ConfigurationYaml.getString("reinforcement_material_remove_reinforcement"))) {
+                int countToGive = reinforcedAtTarget.getMaterialCount();
+                Material materialToGive = reinforcedAtTarget.getMaterialUsed().getMaterial();
+                Location blockLocation = reinforcedAtTarget.getLocation();
+                reinforcedAtTarget.destroyBlock(false);
+                Objects.requireNonNull(blockLocation.getWorld()).dropItemNaturally(blockLocation, new ItemStack(materialToGive, countToGive));
             }
             return;
         }
@@ -66,10 +72,7 @@ public class Events implements Listener {
                 reinforcedAtTarget.destroyBlock(false);
             return;
         }
-        
-        PlayerInventory inventory = player.getInventory();
-        Material hand = inventory.getItemInMainHand().getType();
-        Block block = event.getClickedBlock();
+
         
         ReinforceMaterial reinforceMaterial = canReinforceWithMaterial(hand);
 
@@ -152,6 +155,9 @@ public class Events implements Listener {
         Player player = event.getPlayer();
         ReinforcedBlock block = ReinforcedBlock.getAtLocation(event.getBlock().getLocation());
         if (block != null) {
+            if (block.getOwner() == player.getUniqueId()) {
+
+            }
             block.damageBlock(player.getEyeLocation(), 1);
             if (block.getBreaksLeft() >= 0) {
                 boolean damageOnlyOnLastBreak = ConfigurationYaml.getBoolean("reinforcement_damage_on_break_only");
@@ -216,6 +222,7 @@ public class Events implements Listener {
             if (reinforcedBlock == null || block.getType() == Material.AIR || block.getType() == Material.CAVE_AIR) continue;
             affectedBlockIterator.remove();
             int calculatedDmg = (int)Math.floor(reinforcedBlock.getLocation().distance(sourceLocation));
+            calculatedDmg = (int) (calculatedDmg * reinforcedBlock.getMaterialUsed().getExplosiveMultiplier());
             int damage = (int)Utils.clamp(maxDamage - calculatedDmg, 0, maxDamage);
             if (reinforcedBlock.getBreaksLeft() - damage <= 0) {
                 if (entityExplosion) {

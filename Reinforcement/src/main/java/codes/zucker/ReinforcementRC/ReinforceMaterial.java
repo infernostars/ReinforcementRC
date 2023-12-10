@@ -11,11 +11,13 @@ public class ReinforceMaterial {
     private Material material;
     private int breaksPerReinforce;
     private int maxAllowedBreaks;
+    private double explosiveMultiplier;
 
-    public ReinforceMaterial(Material material, int breaksPerReinforce, int maxAllowedBreaks) {
+    public ReinforceMaterial(Material material, int breaksPerReinforce, int maxAllowedBreaks, double explosiveMultiplier) {
         this.material = material;
         this.breaksPerReinforce = breaksPerReinforce;
         this.maxAllowedBreaks = maxAllowedBreaks;
+        this.explosiveMultiplier = explosiveMultiplier;
     }
 
     public Material getMaterial() {
@@ -42,4 +44,6 @@ public class ReinforceMaterial {
         Material m = Material.getMaterial(material);
         return getFromMaterial(m);
     }
+
+    public double getExplosiveMultiplier() {return explosiveMultiplier;}
 }

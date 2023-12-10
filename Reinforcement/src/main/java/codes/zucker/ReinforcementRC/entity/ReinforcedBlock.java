@@ -112,6 +112,8 @@ public class ReinforcedBlock {
         return breaksLeft;
     }
 
+    public int getMaterialCount() { return Math.floorDiv(breaksLeft, materialUsed.getBreaksPerReinforce()); }
+
     public ReinforceMaterial getMaterialUsed() {
         return materialUsed;
     }

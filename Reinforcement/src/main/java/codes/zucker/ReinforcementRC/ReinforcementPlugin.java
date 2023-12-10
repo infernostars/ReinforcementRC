@@ -29,7 +29,8 @@ public class ReinforcementPlugin extends JavaPlugin
             Material material = Material.getMaterial((String)entry.get(0));
             int breaks = (int)entry.get(1);
             int max = (int)entry.get(2);
-            ReinforceMaterial reinforceMaterial = new ReinforceMaterial(material, breaks, max);
+            double explosiveMultiplier = 1 - (double)entry.get(3);
+            ReinforceMaterial reinforceMaterial = new ReinforceMaterial(material, breaks, max, explosiveMultiplier);
             ReinforceMaterial.entries.add(reinforceMaterial);
         });
 
